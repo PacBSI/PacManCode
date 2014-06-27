@@ -16,18 +16,16 @@ class Coordenada:
 
 
 class Imagem:
-	def __init__(self, arquivo, comprimento, altura,x ,y):
+	def __init__(self, arquivo, x, y):
 		
-		self.arquivo = str(arquivo)
-		self.comprimento = int(comprimento)
-		self.altura = int(altura)
+		self.arquivo = arquivo
 		self.coordenada = Coordenada(x, y)
 		
 class Personagem:
-	def __init__(self,nome,x, y, arquivo, comprimento,altura):
+	def __init__(self,nome,x, y, arquivo):
 		
 		self.nome = str(nome)
-		self.imagem = Imagem(arquivo, comprimento, altura, x, y)
+		self.imagem = Imagem(arquivo,x, y)
 	
 	def andar(self, deslocx, deslocy):
 		self.x = self.x + deslocx
@@ -35,8 +33,8 @@ class Personagem:
 
 
 class Aluno(Personagem):
-	def __init__(self,nome, x, y, arquivo, comprimento,altura):
-		Personagem.__init__(self, nome, x, y, arquivo,comprimento,altura)
+	def __init__(self,nome, x, y, arquivo):
+		Personagem.__init__(self, nome, x, y, arquivo)
 		self.pontos = PONTOS_INICIAIS
 		self.vidas = NUM_VIDAS
 		
@@ -53,9 +51,9 @@ class Aluno(Personagem):
 			return False
 
 class Professor(Personagem):
-	def __init__(self, nome, x, y, arquivo, comprimento,altura):
+	def __init__(self, nome, x, y, arquivo):
 		Personagem.__init__(self, nome,x,y)
-		self.imagem_prof = Imagem(arquivo, comprimento,altura,x,y)
+		self.imagem_prof = Imagem(arquivo,x,y)
 		self.status = False
 		
 
@@ -72,8 +70,8 @@ class Tempo:
 
 
 class Caneta():
-	def __init__(self,arquivo, comprimento, altura,x ,y):
-		self.imagem_caneta = Imagem(arquivo, comprimento, altura,x ,y)
+	def __init__(self,arquivo, x ,y):
+		self.imagem_caneta = Imagem(arquivo,x ,y)
 		self.coordenada_caneta =Coordenada(x, y)
 		self.pontos_caneta = PONTOS_CANETA
 		
@@ -87,8 +85,8 @@ class Musica:
 		self.arqMus = arquivo
 
 class Obstaculo:
-	def __init__(self, arquivo, comprimento, altura, x, y):
-		self.imagem_obst = Imagem(arquivo, comprimento, altura,x ,y)
-		self.coordenada_obst = (x, y)
+	def __init__(self, arquivo,x, y):
+		self.imagem_obst = Imagem(arquivo,x ,y)
+		self.coordenada_obst = Coordenada(x, y)
 
 
