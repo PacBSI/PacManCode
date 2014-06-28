@@ -95,7 +95,7 @@ def Instrucoes():
 
 # ---------- * Jogo / Backend * --------------------------
     # -------- Fase Tutorial ----------#
-FPS = 10
+FPS = 15
 fpsTime = pygame.time.Clock()
 
 screen = pygame.display.set_mode((tela.x, tela.y))
