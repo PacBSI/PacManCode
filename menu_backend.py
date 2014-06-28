@@ -29,23 +29,29 @@ tela = Coordenada(800,600)
 pygame.display.set_caption("PacMan BSI")
     
     # imagem personagem
-img_personagem_stop = Imagem("aaa.png", "", "",10 ,10) # lembrar de ver comp e alt da img
-img_personagem_mov1 = Imagem("arquivo", "comprimento", "altura",posx ,posy)
+pac_down1 = Imagem("pac_down1.png",10 ,10) # lembrar de ver comp e alt da img
+pac_down2 = Imagem("pac_down2.png",10 ,10)
+pac_left1 = Imagem("pac_left1.png",10 ,10)
+pac_left2 = Imagem("pac_left2.png",10 ,10)
+pac_up1 = Imagem("pac_up1.png",10 ,10)
+pac_up2 = Imagem("pac_up2.png",10 ,10)
+pac_right1 = Imagem("pac1.png",10 ,10)
+pac_right2 = Imagem("pac2.png",10 ,10)
 
      # --- imagens inimigos
 
 
-botao_play = Imagem("arquivo", "comprimento", "altura",posx ,posy) # imagem passou a ser chamado botão 
-botao_instruc = Imagem("arquivo", "comprimento", "altura",posx ,posy)
-botao_voltar = Imagem("arquivo", "comprimento", "altura",posx ,posy)
-botao_exit = Imagem("arquivo", "comprimento", "altura",posx ,posy)
+botao_play = Imagem("arquivo",posx ,posy) # imagem passou a ser chamado botão 
+botao_instruc = Imagem("arquivo",posx ,posy)
+botao_voltar = Imagem("arquivo",posx ,posy)
+botao_exit = Imagem("arquivo",posx ,posy)
 
-img_fase_tut = Imagem("first_stage.png", 800, 600,0 ,0) # lembrar de ver comp e alt da img
-img_fase_1 = Imagem("arquivo", "comprimento", "altura",posx ,posy)
-img_fase_2 = Imagem("arquivo", "comprimento", "altura",posx ,posy)
-img_fase_3 = Imagem("arquivo", "comprimento", "altura",posx ,posy)
-img_fase_4 = Imagem("arquivo", "comprimento", "altura",posx ,posy)
-img_fase_5 = Imagem("arquivo", "comprimento", "altura",posx ,posy)
+img_fase_tut = Imagem("first_stage.png",0 ,0) # lembrar de ver comp e alt da img
+img_fase_1 = Imagem("arquivo",posx ,posy)
+img_fase_2 = Imagem("arquivo",posx ,posy)
+img_fase_3 = Imagem("arquivo",posx ,posy)
+img_fase_4 = Imagem("arquivo",posx ,posy)
+img_fase_5 = Imagem("arquivo",posx ,posy)
 
 # ----- Funções menu
 
@@ -88,21 +94,31 @@ def Instrucoes():
 
 
 # ---------- * Jogo / Backend * --------------------------
-
-FPS = 30
+    # -------- Fase Tutorial ----------#
+FPS = 10
 fpsTime = pygame.time.Clock()
 
-screen = pygame.display.set_mode((tela.x,tela.y))
+screen = pygame.display.set_mode((tela.x, tela.y))
 fundo = pygame.image.load(img_fase_tut.arquivo)
-personagem = pygame.image.load(img_personagem_stop.arquivo)
-#x = 10
-#y = 10
+pac1 = pygame.image.load(pac_right1.arquivo)
+pac2 = pygame.image.load(pac_right2.arquivo)
+pacman = 1
+x = 10
+y = 10
 direcao = None
 while True:
-    screen.blit(fundo,(0,0))
-    screen.blit(personagem,(img_personagem_stop.coordenada.x,img_personagem_stop.coordenada.y))
-    keys = pygame.key.get_pressed()
     
+    screen.blit(fundo,(0,0))
+
+    if pacman == 1:
+        screen.blit(pac1,(x,y))
+        pacman += 1
+    elif pacman == 2:
+        screen.blit(pac2,(x,y))
+        pacman -= 1
+        
+       
+    keys = pygame.key.get_pressed()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -117,13 +133,37 @@ while True:
             direcao = "right"
         elif keys[K_ESCAPE]:
             direcao = None
-    
+
     if direcao == "down":
-        img_personagem_stop.coordenada.y += 4
-    if direcao == "up":
-        img_personagem_stop.coordenada.y -= 4
-    if direcao == "left":
-        img_personagem_stop.coordenada.x -= 4
+        pac1 = pygame.image.load(pac_down1.arquivo)
+        pac2 = pygame.image.load(pac_down2.arquivo)
+        y += 12
+        if y >= 550:
+            direcao = "up"
+            
+    elif direcao == "up":
+        pac1 = pygame.image.load(pac_up1.arquivo)
+        pac2 = pygame.image.load(pac_up2.arquivo)
+        y -= 12
+        if y <= 9:
+            direcao = "down"
+                
+    elif direcao == "left":
+        pac1 = pygame.image.load(pac_left1.arquivo)
+        pac2 = pygame.image.load(pac_left2.arquivo)
+        x-=12
+        if x <= 9:
+            direcao = "right"
+            
     if direcao == "right":
-        img_personagem_stop.coordenada.x += 4
+        pac1 = pygame.image.load(pac_right1.arquivo)
+        pac2 = pygame.image.load(pac_right2.arquivo)
+        x+=12
+        if x >= 750:
+            direcao = "left"
+           
+     
+    pygame.display.update()
+    fpsTime.tick(FPS)
+
         
