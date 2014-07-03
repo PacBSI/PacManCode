@@ -11,8 +11,8 @@ PONTOS_CANETA = 10
 
 class Coordenada:
 	def __init__ (self, x ,y):
-		self.x = int(x)
-		self.y = int(y)
+		self.x = x
+		self.y = y
 
 
 class Imagem:
