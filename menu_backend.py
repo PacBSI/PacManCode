@@ -28,7 +28,7 @@ som_coleta_bonus = Som("arq")
 
 #Imagens / tela
 tela = Coordenada(800,600)
-pygame.display.set_caption("PacMan BSI")
+pygame.display.set_caption("PacBSI")
     
     # imagem personagem
 pac_down1 = Imagem("pac_down1.png",10 ,10) 
@@ -47,12 +47,12 @@ pac_right3 = Imagem("pac3.png",10 ,10)
      # --- imagens inimigos
 
 
-botao_play = Imagem("play.png",100 ,100) # imagem passou a ser chamado botão 
-botao_play_selec = Imagem("play_selec.png",100 ,100)
-botao_play_focus = Imagem("play_focus.png",100 ,100)
-botao_exit = Imagem("exit.png",400 ,400)
-botao_exit_selec = Imagem("exit_selec.png",400 ,400)
-botao_exit_focus = Imagem("exit_focus.png",400 ,400)
+botao_play = Imagem("play.png",280 ,200) # imagem passou a ser chamado botão 
+botao_play_selec = Imagem("play_selec.png",280 ,200)
+botao_play_focus = Imagem("play_focus.png",280 ,200)
+botao_exit = Imagem("exit.png",280 ,280)
+botao_exit_selec = Imagem("exit_selec.png",280 ,280)
+botao_exit_focus = Imagem("exit_focus.png",280 ,280)
 
 img_menu = Imagem("first_stage.png",0,0) #DEFINIR IMAGEM DO MENU
 img_menu2 = Imagem("fundo.png",265,145)
