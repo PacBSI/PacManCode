@@ -55,6 +55,7 @@ botao_exit_selec = Imagem("exit_selec.png",400 ,400)
 botao_exit_focus = Imagem("exit_focus.png",400 ,400)
 
 img_menu = Imagem("first_stage.png",0,0) #DEFINIR IMAGEM DO MENU
+img_menu2 = Imagem("fundo.png",265,145)
 img_fase_tut = Imagem("first_stage.png",0 ,0) 
 img_fase_1 = Imagem("arquivo","posx" ,"posy")
 img_fase_2 = Imagem("arquivo","posx" ,"posy")
@@ -72,6 +73,7 @@ sair_f = pygame.image.load(botao_exit_focus.arquivo)
 
 screen = pygame.display.set_mode((tela.x, tela.y))
 tela_menu = pygame.image.load(img_menu.arquivo)
+fundo_menu = pygame.image.load(img_menu2.arquivo)
 FPS = 15
 
 def menu():
@@ -79,6 +81,7 @@ def menu():
     while True:
 
         screen.blit(tela_menu,(0,0)) # TEM QUE SE FAZER A TELA DO MENU
+        screen.blit(fundo_menu,(img_menu2.coordenada.x,img_menu2.coordenada.y))
         screen.blit(play,(botao_play.coordenada.x,botao_play.coordenada.y))
         screen.blit(sair,(botao_exit.coordenada.x,botao_exit.coordenada.y))
         # FALTA OS OUTROS BOTÕES 
@@ -113,66 +116,44 @@ def Instrucoes():
         
         if pos_mouse(play,(botao_play.coordenada.x,botao_play.coordenada.y),pmouse) == True:
             if event.type == MOUSEMOTION:
-                #screen.blit(tela_menu,(img_menu.coordenada.x,img_menu.coordenada.y))
                 screen.blit(play_f,(botao_play_focus.coordenada.x,botao_play_focus.coordenada.y))
-                #screen.blit(sair,(botao_exit.coordenada.x,botao_exit.coordenada.y))
                 pygame.display.flip()
                 pygame.display.update()
-                #fpsTime.tick(FPS)
                     
             elif event.type == MOUSEBUTTONDOWN and event.button == 1:
-                #screen.blit(tela_menu,(img_menu.coordenada.x,img_menu.coordenada.y))
                 screen.blit(play_s,(botao_play_selec.coordenada.x,botao_play_selec.coordenada.y))
-                #screen.blit(sair,(botao_exit.coordenada.x,botao_exit.coordenada.y))
                 pygame.display.flip()
                 pygame.display.update()
-                #fpsTime.tick(FPS)
                     
             elif event.type == MOUSEBUTTONUP and event.button == 1:
-                #screen.blit(tela_menu,(img_menu.coordenada.x,img_menu.coordenada.y))
                 screen.blit(play_s,(botao_play_selec.coordenada.x,botao_play_selec.coordenada.y))
-                #screen.blit(sair,(botao_exit.coordenada.x,botao_exit.coordenada.y))
                 pygame.display.flip()
                 pygame.display.update()
-                #fpsTime.tick(FPS)
                 tutorial()
         else:
-            #screen.blit(tela_menu,(img_menu.coordenada.x,img_menu.coordenada.y))
             screen.blit(play,(botao_play.coordenada.x,botao_play.coordenada.y))
-            #screen.blit(sair,(botao_exit.coordenada.x,botao_exit.coordenada.y))
             pygame.display.flip()
             pygame.display.update()
         
         
         if pos_mouse(sair,(botao_exit.coordenada.x,botao_exit.coordenada.y),pmouse) == True:
             if event.type == MOUSEMOTION:
-                #screen.blit(tela_menu,(img_menu.coordenada.x,img_menu.coordenada.y))
-                #screen.blit(play,(botao_play.coordenada.x,botao_play.coordenada.y))
                 screen.blit(sair_f,(botao_exit_focus.coordenada.x,botao_exit_focus.coordenada.y))
                 pygame.display.flip()
                 pygame.display.update()
-                #fpsTime.tick(FPS)
                     
             elif event.type == MOUSEBUTTONDOWN and event.button == 1:
-                #screen.blit(tela_menu,(img_menu.coordenada.x,img_menu.coordenada.y))
-                #screen.blit(play,(botao_play.coordenada.x,botao_play.coordenada.y))
                 screen.blit(sair_s,(botao_exit_selec.coordenada.x,botao_exit_selec.coordenada.y))
                 pygame.display.flip()
                 pygame.display.update()
-                #fpsTime.tick(FPS)
                     
             elif event.type == MOUSEBUTTONUP and event.button == 1:
-                #screen.blit(tela_menu,(img_menu.coordenada.x,img_menu.coordenada.y))
-                #screen.blit(play,(botao_play.coordenada.x,botao_play.coordenada.y))
                 screen.blit(sair_s,(botao_exit_selec.coordenada.x,botao_exit_selec.coordenada.y))
                 pygame.display.flip()
                 pygame.display.update()
-                #fpsTime.tick(FPS)
                 pygame.quit()
                 sys.exit()
         else:
-            #screen.blit(tela_menu,(img_menu.coordenada.x,img_menu.coordenada.y))
-            #screen.blit(play,(botao_play.coordenada.x,botao_play.coordenada.y))
             screen.blit(sair,(botao_exit.coordenada.x,botao_exit.coordenada.y))
             pygame.display.flip()
             pygame.display.update()
